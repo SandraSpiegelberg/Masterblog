@@ -41,9 +41,9 @@ def add():
     """
     if request.method == 'POST':
         blog_posts = load_posts()
-        author = request.form.get("author")
-        title = request.form.get("title")
-        content = request.formget("msg")
+        author = request.form.get("post_author")
+        title = request.form.get("post_title")
+        content = request.form.get("post_message")
         if blog_posts:
             post_id = len(blog_posts) + 1
         else:
@@ -58,8 +58,8 @@ def add():
         blog_posts.append(new_post)
         save_posts(blog_posts)
         return redirect(url_for('index'))
-
-    return render_template('add.html')
+    else:
+        return render_template('add.html')
 
 
 if __name__ == "__main__":

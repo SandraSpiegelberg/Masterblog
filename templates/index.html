@@ -15,5 +15,10 @@
         <p>{{ post["content"] }}</p>
     </div>
     {% endfor %}
+    <div class="button">
+        <form action="/add" method="GET">
+            <button>Make a new post!</button>
+        </form>
+    </div>
 </body>
 </html>
