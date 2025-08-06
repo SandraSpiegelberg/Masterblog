@@ -14,7 +14,7 @@
     {
         "id": 3,
         "author": "John Doe",
-        "title": "new test post",
-        "content": "This is the first test post with python."
+        "title": "Next Post",
+        "content": "This is the next post and not the last for now."
     }
 ]
