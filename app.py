@@ -32,6 +32,16 @@ def save_posts(posts):
         json.dump(posts, blog_file, indent=4, ensure_ascii=False)
 
 
+def fetch_post_by_id(id_num):
+    """Fetches the post with the given id.
+    :param id_num: integer id_number of a post
+    """
+    posts = load_posts()
+    for post in posts:
+        if post["id"] == id_num:
+            return post
+    return None
+
 
 @app.route('/')
 def index():
@@ -96,7 +106,41 @@ def delete(post_id):
 
     return redirect(url_for('index'))
 
-    
+
+@app.route('/update/<int:post_id>', methods=['GET', 'POST'])
+def update(post_id):
+    """Update a current blog posts. 
+    This function finds the blog post with the given id and update it in the list.
+    Also redirects back to the home page.
+    :param post_id: unique id number of a blog post
+    """
+    # Fetch the blog posts from the JSON file
+    old_post = fetch_post_by_id(post_id)
+    blog_posts = load_posts()
+    if old_post is None:
+        # Post not found
+        return "Post not found", 404
+
+    if request.method == 'POST':
+        # Update the post in the JSON file
+        author = request.form.get("post_author")
+        title = request.form.get("post_title")
+        content = request.form.get("post_message")
+
+        update_post = {
+            "id" : post_id,
+            "author" : author,
+            "title" : title,
+            "content" : content 
+        }
+
+        blog_posts = [update_post if post["id"] == post_id else post for post in blog_posts]
+
+        save_posts(blog_posts)
+
+        return redirect(url_for('index'))
+    #it's a GET request
+    return render_template('update.html', post=old_post)
 
 
 if __name__ == "__main__":

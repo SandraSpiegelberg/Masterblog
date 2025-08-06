@@ -1,5 +1,7 @@
 :root {
   --accent: #009688;
+  --accent-dark: #00796b;
+  --accent-danger: #d32f2f;
 }
 
 body {
@@ -24,7 +26,7 @@ h1 {
   border: 1px solid #ccc;
   border-radius: 2em;
   background-color: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.35);
 }
 
 p {
@@ -71,7 +73,7 @@ textarea {
 input:focus,
 textarea:focus {
   /* To give a little highlight on active elements */
-  outline: 2px solid #0066cc;
+  outline: 2px solid var(--accent-dark);
   box-shadow: 0 0 5px rgba(0, 102, 204, 0.4);
 }
 
@@ -98,21 +100,30 @@ button {
   transition: background-color 0.2s ease;
 }
 .form-button{
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
   margin-top: 1em;
 }
 
 button:hover {
-  background-color: #00796b;
+  background-color: var(--accent-dark);
+}
+
+button.delete:hover {
+  background-color: var(--accent-danger);
+  color: white;
 }
 
 .post {
-    background-color: #FFF;
-    border: 1px solid #DDD;
+    background-color: #e0f5f3;
+    border: 2px solid #dce9e8;
     padding: 20px;
     margin: 20px auto;
     border-radius: 10px;
     max-width: 500px;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 10px rgba(0, 150, 136, 0.3);
 }
 
 .post h2 {

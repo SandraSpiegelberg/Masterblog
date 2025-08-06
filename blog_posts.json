@@ -7,14 +7,26 @@
     },
     {
         "id": 2,
-        "author": "Jane Doe",
+        "author": "John Doe",
         "title": "Second Post",
         "content": "This is another post."
     },
     {
         "id": 3,
         "author": "John Doe",
+        "title": "First Post with Flask",
+        "content": "This is the first post created with flask."
+    },
+    {
+        "id": 4,
+        "author": "John Doe",
         "title": "Next Post",
         "content": "This is the next post and not the last for now."
+    },
+    {
+        "id": 5,
+        "author": "John Doe",
+        "title": "Next Post for Tests",
+        "content": "This is the next post and I think the last for now."
     }
 ]
