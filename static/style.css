@@ -1,6 +1,8 @@
 :root {
   --accent: #009688;
   --accent-dark: #00796b;
+  --accent-soft: #e0f5f3;
+  --accent-soft-light: #e0f2f1;
   --accent-danger: #d32f2f;
 }
 
@@ -110,13 +112,23 @@ button:hover {
   background-color: var(--accent-dark);
 }
 
+button.likes{
+  background-color: var(--accent-soft);
+  color: var(--accent);
+}
+
+button.likes:hover{
+  background-color: var(--accent-soft-light);
+  color: var(--accent);
+}
+
 button.delete:hover {
   background-color: var(--accent-danger);
   color: white;
 }
 
 .post {
-    background-color: #e0f5f3;
+    background-color: var(--accent-soft);
     border: 2px solid #dce9e8;
     padding: 20px;
     margin: 20px auto;

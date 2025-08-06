@@ -14,6 +14,9 @@
         <p><em>Written by {{ blog_post["author"] }}</em></p>
         <p>{{ blog_post["content"] }}</p>
         <div class="form-button">
+            <form action="{{url_for( 'likes', post_id=blog_post['id'])}}" method="POST">
+                <button class="likes">❤️ {{blog_post["likes"]}} likes</button>
+            </form>
             <form action="{{url_for( 'update', post_id=blog_post['id'])}}" method="GET">
                 <button>update</button>
             </form>

@@ -76,7 +76,8 @@ def add():
             "id" : post_id,
             "author" : author,
             "title" : title,
-            "content" : content 
+            "content" : content,
+            "likes" : 0
         }
         blog_posts.append(new_post)
 
@@ -131,7 +132,8 @@ def update(post_id):
             "id" : post_id,
             "author" : author,
             "title" : title,
-            "content" : content 
+            "content" : content,
+            "likes" : old_post["likes"] 
         }
 
         blog_posts = [update_post if post["id"] == post_id else post for post in blog_posts]
@@ -141,6 +143,22 @@ def update(post_id):
         return redirect(url_for('index'))
     #it's a GET request
     return render_template('update.html', post=old_post)
+
+
+@app.route('/likes/<int:post_id>', methods=['POST'])
+def likes(post_id):
+    """Increase the likes of the post with the given post id.
+    Also redirects back to the home page.
+    :param post_id: unique id number of a blog post
+    """
+    like_post = fetch_post_by_id(post_id)
+    like_post['likes'] +=1
+
+    blog_posts = load_posts()
+    blog_posts = [post if post['id'] != post_id else like_post for post in blog_posts]
+    save_posts(blog_posts)
+
+    return redirect(url_for('index'))
 
 
 if __name__ == "__main__":
